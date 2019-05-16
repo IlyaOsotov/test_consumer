@@ -1,5 +1,8 @@
 # README
 
+* run kafka
+* run racecar by `bundle exec racecar OrdersConsumer`
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
