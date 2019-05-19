@@ -4,6 +4,6 @@ subscribes_to "orders-topic"
   def process(message)
     puts message.key
     puts message.value
-    ActionCable.server.broadcast 'OrdersChannel', message.value
+    ActionCable.server.broadcast 'orders_channel', message.value
   end
 end
