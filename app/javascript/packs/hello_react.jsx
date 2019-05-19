@@ -4,23 +4,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
-
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+import { ActionCableProvider } from 'react-actioncable-provider';
+import App from './App';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <ActionCableProvider url="ws://localhost:3000/cable">
+      <App />
+    </ActionCableProvider>,
     document.body.appendChild(document.createElement('div')),
   )
 })
