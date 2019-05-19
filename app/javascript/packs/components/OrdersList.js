@@ -4,12 +4,7 @@ import NewOrderForm from './NewOrderForm';
 
 class OrdersList extends React.Component {
   state = {
-    Orders: [],
-    activeOrder: null
-  };
-
-  handleClick = id => {
-    this.setState({ activeOrder: id });
+    Orders: []
   };
 
   handleReceivedOrder = response => {
@@ -21,7 +16,7 @@ class OrdersList extends React.Component {
   };
 
   render = () => {
-    const { Orders, activeOrder } = this.state;
+    const { Orders } = this.state;
     return (
       <div className="OrdersList">
         <ActionCableConsumer
@@ -29,17 +24,17 @@ class OrdersList extends React.Component {
           onReceived={this.handleReceivedOrder}
         />
         <h2>Orders</h2>
-        <ul>{mapOrders(Orders, this.handleClick)}</ul>
+        <ul>{mapOrders(Orders)}</ul>
         <NewOrderForm />
       </div>
     );
   };
 }
 
-const mapOrders = (Orders, handleClick) => {
+const mapOrders = (Orders) => {
   return Orders.map(Order => {
     return (
-      <li key={Order.id} onClick={() => handleClick(Order.id)}>
+      <li key={Order.id}>
         {Order.content}
       </li>
     );
